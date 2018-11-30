@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa.gazebo.xacro" />
+  <!-- <xacro:include filename="$(find iiwa_description)/urdf/iiwa.gazebo.xacro" /> -->
   <!-- Import Transmissions -->
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa.transmission.xacro" />
+  <!-- <xacro:include filename="$(find iiwa_description)/urdf/iiwa.transmission.xacro" /> -->
   <!-- Include Utilities -->
   <xacro:include filename="$(find iiwa_description)/urdf/utilities.xacro" />
   
@@ -328,11 +328,16 @@
     </joint>
     
     <link name="${robot_name}_link_ee">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1e-6"/>
+        <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+      </inertial>
     </link>
     
     <!--Extensions -->
-    <xacro:iiwa_gazebo robot_name="${robot_name}" />
-    <xacro:iiwa_transmission hardware_interface="${hardware_interface}"/>
+    <!-- <xacro:iiwa_gazebo robot_name="${robot_name}" />
+    <xacro:iiwa_transmission hardware_interface="${hardware_interface}"/> -->
     
   </xacro:macro>
   
